@@ -27,7 +27,7 @@ class BaseColumns(models.Model):
     updated_by = models.CharField(max_length=50, default="system")
     is_deleted = models.BooleanField(default=False)
 
-    # object = BaseManager()
+    objects = BaseManager()
 
     class Meta:
         abstract = True

@@ -32,3 +32,11 @@ class UserService(BaseService):
     def delete(self, pk: int) -> int:
         pk = self.dao.remove(pk)
         return pk
+
+    def get_by_username(self, username: str) -> Dict[str, Any]:
+        obj = self.dao.get_by_username(username)
+        return UserSchema.from_orm(obj).dict()
+
+    def get_by_email(self, email: str) -> Dict[str, Any]:
+        obj = self.dao.get_by_email(email)
+        return UserSchema.from_orm(obj).dict()

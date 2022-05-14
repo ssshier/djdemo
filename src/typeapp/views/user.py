@@ -34,3 +34,13 @@ class UserView(APIView):
     def delete(self, request):
         pk = request.GET.get("id")
         return self.service.delete(pk)
+
+    @response_decorator
+    def get_by_username(self, request):
+        username = request.GET.get("username")
+        return self.service.get_by_username(username)
+
+    @response_decorator
+    def get_by_email(self, request):
+        email = request.GET.get("email")
+        return self.service.get_by_email(email)
