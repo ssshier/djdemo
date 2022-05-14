@@ -1,6 +1,4 @@
-
 from typing import Any, Dict, Generic, TypeVar, Union
-
 
 from django.db.models import Model
 from django.forms import model_to_dict

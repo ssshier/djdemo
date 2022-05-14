@@ -10,4 +10,5 @@ def response_decorator(func):
             "message": "success"
         }
         return JsonResponse(data=result, json_dumps_params={'ensure_ascii': False})
+
     return wrapper

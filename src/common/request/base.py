@@ -1,8 +1,9 @@
 from typing import Any
-import requests # type: ignore
-from retry import retry # type: ignore
+import requests  # type: ignore
+from retry import retry  # type: ignore
 
 from common.constants.http import HttpMethod
+
 
 class BaseRequest:
 

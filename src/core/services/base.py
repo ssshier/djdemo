@@ -7,7 +7,7 @@ class BaseService:
 
     def list(self) -> Any:
         pass
-    
+
     def page(self) -> Any:
         pass
 
