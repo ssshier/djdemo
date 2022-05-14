@@ -9,7 +9,7 @@ CreateSchemaType = TypeVar('CreateSchemaType', bound=BaseModel)
 UpdateSchemaType = TypeVar('UpdateSchemaType', bound=BaseModel)
 
 
-class BaseDao(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
+class BaseMapper(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
 
     def __init__(self, model: ModelType) -> None:
         self.model = model
