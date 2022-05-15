@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class TypeAppConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'typeapp'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "typeapp"

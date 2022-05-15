@@ -7,29 +7,28 @@ import django.db.models.manager
 class Migration(migrations.Migration):
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='User',
+            name="User",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('created_by', models.CharField(default='system', max_length=50)),
-                ('updated_by', models.CharField(default='system', max_length=50)),
-                ('is_deleted', models.BooleanField(default=False)),
-                ('username', models.CharField(max_length=50, unique=True)),
-                ('password', models.CharField(max_length=50)),
-                ('email', models.EmailField(max_length=50, unique=True)),
-                ('is_active', models.BooleanField(default=True)),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("created_by", models.CharField(default="system", max_length=50)),
+                ("updated_by", models.CharField(default="system", max_length=50)),
+                ("is_deleted", models.BooleanField(default=False)),
+                ("username", models.CharField(max_length=50, unique=True)),
+                ("password", models.CharField(max_length=50)),
+                ("email", models.EmailField(max_length=50, unique=True)),
+                ("is_active", models.BooleanField(default=True)),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
             managers=[
-                ('object', django.db.models.manager.Manager()),
+                ("object", django.db.models.manager.Manager()),
             ],
         ),
     ]

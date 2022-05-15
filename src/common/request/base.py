@@ -6,7 +6,6 @@ from common.constants.http import HttpMethod
 
 
 class BaseRequest:
-
     def __init__(self) -> None:
         pass
 

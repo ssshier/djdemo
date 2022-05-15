@@ -6,9 +6,7 @@ from pydantic import BaseModel
 
 class RWModel(BaseModel):
     class Config:
-        json_encoders = {
-            datetime: repr
-        }
+        json_encoders = {datetime: repr}
 
 
 class RWBaseColumns(BaseModel):
@@ -20,6 +18,4 @@ class RWBaseColumns(BaseModel):
     is_deleted: Optional[bool]
 
     class Config:
-        json_encoders = {
-            datetime: repr
-        }
+        json_encoders = {datetime: repr}

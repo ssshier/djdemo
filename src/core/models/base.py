@@ -3,10 +3,9 @@ from django.db import models
 
 
 class BaseManager(models.Manager):
-
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super(BaseManager, self).__init__(*args, **kwargs)
-        self.alive_only: bool = kwargs.get('alive_only', True)
+        self.alive_only: bool = kwargs.get("alive_only", True)
 
     def get_queryset(self):
         if self.alive_only:
@@ -14,7 +13,6 @@ class BaseManager(models.Manager):
 
 
 class BaseQuerySet(models.QuerySet):
-
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super(BaseQuerySet, self).__init__(*args, **kwargs)
 

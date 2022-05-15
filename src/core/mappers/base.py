@@ -4,13 +4,12 @@ from django.db.models import Model
 from django.forms import model_to_dict
 from pydantic import BaseModel
 
-ModelType = TypeVar('ModelType', bound=Model)
-CreateSchemaType = TypeVar('CreateSchemaType', bound=BaseModel)
-UpdateSchemaType = TypeVar('UpdateSchemaType', bound=BaseModel)
+ModelType = TypeVar("ModelType", bound=Model)
+CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
+UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
 
 
 class BaseMapper(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
-
     def __init__(self, model: ModelType) -> None:
         self.model = model
 
@@ -25,7 +24,9 @@ class BaseMapper(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         obj.save()
         return obj
 
-    def update(self, db_obj: ModelType, obj_in: Union[UpdateSchemaType, Dict[str, Any]]) -> ModelType:
+    def update(
+        self, db_obj: ModelType, obj_in: Union[UpdateSchemaType, Dict[str, Any]]
+    ) -> ModelType:
         obj_data = model_to_dict(db_obj)
         if isinstance(obj_in, dict):
             update_data = obj_in
