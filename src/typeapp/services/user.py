@@ -1,13 +1,13 @@
 from typing import Any, Dict, List
+from django.contrib.auth.hashers import make_password, check_password  # type: ignore
 from typeapp.mappers.user import user_mapper
 from typeapp.models.user import User
-from typeapp.schemas.user import User as UserSchema
+from typeapp.schemas.user import User as UserSchema, UserPasswordChange
 from typeapp.schemas.user import UserCreate, UserUpdate
 from core.services.base import BaseService
 
 
 class UserService(BaseService):
-
     def __init__(self):
         super().__init__()
         self.mapper = user_mapper
@@ -39,4 +39,14 @@ class UserService(BaseService):
 
     def get_by_email(self, email: str) -> Dict[str, Any]:
         obj = self.mapper.get_by_email(email)
+        return UserSchema.from_orm(obj).dict()
+
+    def change_password(self, obj_in: UserPasswordChange):
+        if obj_in.password != obj_in.password_confirm:
+            raise ValueError("Passwords must match")
+        db_obj: User = self.mapper.get_by_username(obj_in.username)
+        if check_password(obj_in.password, db_obj.password):
+            raise ValueError("New password must be different than old password")
+        obj_in.password = make_password(obj_in.password)
+        obj = self.mapper.change_password(obj_in)
         return UserSchema.from_orm(obj).dict()

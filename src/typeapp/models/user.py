@@ -3,7 +3,7 @@ from core.models.base import BaseColumns
 
 
 class User(BaseColumns):
-    username = models.CharField(max_length=50, unique=True)
-    password = models.CharField(max_length=50)
-    email = models.EmailField(max_length=50, unique=True)
-    is_active = models.BooleanField(default=True)
+    username: str = models.CharField(max_length=50, unique=True)
+    password: str = models.CharField(max_length=50)
+    email: str = models.EmailField(max_length=50, unique=True)
+    is_active: bool = models.BooleanField(default=True)
