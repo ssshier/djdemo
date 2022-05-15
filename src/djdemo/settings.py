@@ -48,6 +48,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "core.middlewares.response.ResponseMiddleware",
+    "core.middlewares.request.RequestMiddleware",
 ]
 
 ROOT_URLCONF = "djdemo.urls"

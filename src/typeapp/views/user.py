@@ -1,6 +1,6 @@
+from django.views.decorators.http import require_http_methods
 from rest_framework.views import APIView  # type: ignore
 
-from core.decorators.request import require_http_methods
 
 from typeapp.services.user import UserService
 from typeapp.schemas.user import UserCreate, UserUpdate, UserPasswordChange
