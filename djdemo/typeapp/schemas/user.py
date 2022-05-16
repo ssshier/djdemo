@@ -1,4 +1,4 @@
-from pydantic import validator  # type: ignore
+from pydantic import validator
 from django.contrib.auth.hashers import make_password
 from core.schemas.base import RWModel, RWBaseColumns
 

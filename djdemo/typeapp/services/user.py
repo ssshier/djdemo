@@ -1,5 +1,7 @@
 from typing import Any, Dict, List
-from django.contrib.auth.hashers import make_password, check_password  # type: ignore
+from django.contrib.auth.hashers import make_password, check_password
+from common.exceptions.cmm import CMMap
+from common.exceptions.wx import WXException
 from typeapp.mappers.user import user_mapper
 from typeapp.models.user import User
 from typeapp.schemas.user import User as UserSchema, UserPasswordChange
@@ -43,10 +45,10 @@ class UserService(BaseService):
 
     def change_password(self, obj_in: UserPasswordChange):
         if obj_in.password != obj_in.password_confirm:
-            raise ValueError("Passwords must match")
+            raise WXException(**CMMap.USER.PASSWORD_MUST_MATCH)
         db_obj: User = self.mapper.get_by_username(obj_in.username)
         if check_password(obj_in.password, db_obj.password):
-            raise ValueError("New password must be different than old password")
+            raise WXException(**CMMap.USER.PASSWORD_MUST_DIFF)
         obj_in.password = make_password(obj_in.password)
         obj = self.mapper.change_password(obj_in)
         return UserSchema.from_orm(obj).dict()

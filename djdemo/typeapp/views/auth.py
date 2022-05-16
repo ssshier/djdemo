@@ -1,5 +1,5 @@
-from rest_framework.views import APIView  # type: ignore
-from rest_framework.request import Request  # type: ignore
+from rest_framework.views import APIView
+from rest_framework.request import Request
 
 from typeapp.schemas.auth import LoginSchema
 from typeapp.services.auth import LoginService

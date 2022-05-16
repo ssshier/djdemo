@@ -1,11 +1,12 @@
 from django.http import JsonResponse
 from django.utils.deprecation import MiddlewareMixin
+from rest_framework.request import Request
 from loguru import logger
 from common.utils.token import decode_token
 
 
 class LoginMiddleware(MiddlewareMixin):
-    def process_request(self, request):
+    def process_request(self, request: Request):
         token: str = request.headers.get("Authorization")
         try:
             decode_token(token)

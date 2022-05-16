@@ -20,7 +20,7 @@ class BaseMapper(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         return self.model.objects.get(id=id)
 
     def create(self, obj_in: CreateSchemaType) -> ModelType:
-        obj: ModelType = self.model(**obj_in.dict())  # type: ignore
+        obj: ModelType = self.model(**obj_in.dict())
         obj.save()
         return obj
 

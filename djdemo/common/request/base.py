@@ -1,7 +1,7 @@
 from typing import Any
-from loguru import logger  # type: ignore
-import requests  # type: ignore
-from retry import retry  # type: ignore
+from loguru import logger
+import requests
+from retry import retry
 
 from common.constants.http import HttpMethod
 
