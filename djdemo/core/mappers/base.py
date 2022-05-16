@@ -1,4 +1,4 @@
-from typing import Any, Dict, Generic, TypeVar, Union
+from typing import Any, Dict, Generic, Type, TypeVar, Union
 
 from django.db.models import Model
 from django.forms import model_to_dict
@@ -10,7 +10,7 @@ UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
 
 
 class BaseMapper(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
-    def __init__(self, model: ModelType) -> None:
+    def __init__(self, model: Type[ModelType]) -> None:
         self.model = model
 
     def list(self) -> Any:

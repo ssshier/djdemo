@@ -4,8 +4,6 @@ from core.mappers.base import BaseMapper
 
 
 class UserMapper(BaseMapper[User, UserCreate, UserUpdate]):
-    pass
-
     def get_by_username(self, username: str) -> User:
         return self.model.objects.get(username=username)
 

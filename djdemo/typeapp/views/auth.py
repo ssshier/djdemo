@@ -1,4 +1,5 @@
-from rest_framework.views import APIView
+from rest_framework.views import APIView  # type: ignore
+from rest_framework.request import Request  # type: ignore
 
 from typeapp.schemas.auth import LoginSchema
 from typeapp.services.auth import LoginService
@@ -11,6 +12,6 @@ class LoginView(APIView):
         self.service = LoginService()
 
     @response_decorator
-    def post(self, request):
+    def post(self, request: Request):
         obj_in = LoginSchema(**request.data)
         return self.service.login(obj_in)

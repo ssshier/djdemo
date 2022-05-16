@@ -2,6 +2,7 @@ import functools
 from typing import Any
 
 from django.http import JsonResponse
+from loguru import logger
 
 
 def response_decorator(func: Any):
@@ -10,6 +11,7 @@ def response_decorator(func: Any):
         try:
             data = func(*args, **kwargs)
         except Exception as e:
+            logger.error(f"Request exception, detail: {e}")
             message = e.args
             result = {"code": 500, "message": message}
             return JsonResponse(

@@ -1,4 +1,5 @@
 from typing import Any
+from loguru import logger  # type: ignore
 import requests  # type: ignore
 from retry import retry  # type: ignore
 
@@ -10,15 +11,19 @@ class BaseRequest:
         pass
 
     def get(self, url: str, **kwargs: Any) -> requests.Response:
+        logger.info(f"GET {url} {kwargs}")
         return self._request(HttpMethod.GET, url, **kwargs)
 
     def post(self, url: str, **kwargs: Any) -> requests.Response:
+        logger.info(f"POST {url} {kwargs}")
         return self._request(HttpMethod.POST, url, **kwargs)
 
     def put(self, url: str, **kwargs: Any) -> requests.Response:
+        logger.info(f"PUT {url} {kwargs}")
         return self._request(HttpMethod.PUT, url, **kwargs)
 
     def delete(self, url: str, **kwargs: Any) -> requests.Response:
+        logger.info(f"DELETE {url} {kwargs}")
         return self._request(HttpMethod.DELETE, url, **kwargs)
 
     @retry(Exception, tries=3, delay=1)
