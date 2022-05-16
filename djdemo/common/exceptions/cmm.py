@@ -19,6 +19,11 @@ class UserCMMap:
         "message": "New password must be different than old password",
         "zh_message": "新密码必须与旧密码不同",
     }
+    DECODE_AUTHORIZATION_FAIL = {
+        "code": _PREFIX + "03",
+        "message": "Decode authorization fail",
+        "zh_message": "解码授权失败",
+    }
 
 
 class CMMap:

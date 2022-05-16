@@ -10,8 +10,8 @@ class ExceptionMiddleware(MiddlewareMixin):
             return JsonResponse(
                 data=exception.dict(), json_dumps_params={"ensure_ascii": False}
             )
-        message = exception.args
-        result = WXException(message=str(message)).dict()
+        message = str(exception.args)
+        result = WXException(message=message).dict()
         return JsonResponse(
             data=result, status=500, json_dumps_params={"ensure_ascii": False}
         )
