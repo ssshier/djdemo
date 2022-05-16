@@ -4,7 +4,7 @@ from rest_framework.request import Request
 
 from typeapp.services.user import UserService
 from typeapp.schemas.user import UserCreate, UserUpdate, UserPasswordChange
-from typeapp.utils.response import response_decorator
+from core.decorators.response import response_decorator
 
 
 class UserView(APIView):

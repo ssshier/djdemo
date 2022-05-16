@@ -3,7 +3,7 @@ from rest_framework.request import Request
 
 from typeapp.schemas.auth import LoginSchema
 from typeapp.services.auth import LoginService
-from typeapp.utils.response import response_decorator
+from core.decorators.response import response_decorator
 
 
 class LoginView(APIView):
