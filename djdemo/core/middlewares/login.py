@@ -10,6 +10,8 @@ from common.exceptions.wx import WXException
 
 class LoginMiddleware(MiddlewareMixin):
     def process_request(self, request: Request):
+        if request.path in ["/typeapp/login"]:
+            return
         token: str = request.headers.get("Authorization")
         try:
             decode_token(token)
