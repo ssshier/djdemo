@@ -7,29 +7,28 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='ComExc',
+            name="ComExc",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('created_by', models.CharField(default='system', max_length=50)),
-                ('updated_by', models.CharField(default='system', max_length=50)),
-                ('is_deleted', models.BooleanField(default=False)),
-                ('app_code', models.CharField(max_length=32)),
-                ('app_name', models.CharField(max_length=32)),
-                ('module_code', models.CharField(max_length=32)),
-                ('module_name', models.CharField(max_length=32)),
-                ('name', models.CharField(max_length=32)),
-                ('code', models.CharField(max_length=32)),
-                ('message', models.CharField(max_length=128)),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("created_by", models.CharField(default="system", max_length=50)),
+                ("updated_by", models.CharField(default="system", max_length=50)),
+                ("is_deleted", models.BooleanField(default=False)),
+                ("app_code", models.CharField(max_length=32)),
+                ("app_name", models.CharField(max_length=32)),
+                ("module_code", models.CharField(max_length=32)),
+                ("module_name", models.CharField(max_length=32)),
+                ("name", models.CharField(max_length=32)),
+                ("code", models.CharField(max_length=32)),
+                ("message", models.CharField(max_length=128)),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]
