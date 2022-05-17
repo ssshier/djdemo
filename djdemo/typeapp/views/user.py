@@ -2,6 +2,7 @@ from django.views.decorators.http import require_http_methods
 from rest_framework.views import APIView
 from rest_framework.request import Request
 
+from core.schemas.query import SuQuerySchema
 from typeapp.services.user import UserService
 from typeapp.schemas.user import UserCreate, UserUpdate, UserPasswordChange
 from core.decorators.response import response_decorator
@@ -53,6 +54,17 @@ class UserView(APIView):
     def change_password(self, request: Request):
         obj_in = UserPasswordChange(**request.data)
         return self.service.change_password(obj_in)
+
+
+class UserQueryView(APIView):
+    def __init__(self) -> None:
+        super().__init__()
+        self.service = UserService()
+
+    @response_decorator
+    def post(self, request: Request):
+        obj_in = SuQuerySchema(**request.data)
+        return self.service.query(obj_in)
 
 
 class UserByUsernameView(APIView):

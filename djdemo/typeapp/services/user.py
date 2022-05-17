@@ -2,6 +2,7 @@ from typing import Any, Dict, List
 from django.contrib.auth.hashers import make_password, check_password
 from common.exceptions.cmm import CMMap
 from common.exceptions.wx import WXException
+from core.schemas.query import SuQuerySchema
 from typeapp.mappers.user import user_mapper
 from typeapp.models.user import User
 from typeapp.schemas.user import User as UserSchema, UserPasswordChange
@@ -17,6 +18,11 @@ class UserService(BaseService):
     def list(self) -> List[Dict[str, Any]]:
         objs = self.mapper.list()
         return [UserSchema.from_orm(obj).dict() for obj in objs]
+
+    def query(self, obj_in: SuQuerySchema):
+        objs = self.mapper.query(obj_in)
+        objs["data"] = [UserSchema.from_orm(obj).dict() for obj in objs["data"]]
+        return objs
 
     def get(self, pk: int) -> Dict[str, Any]:
         obj = self.mapper.get(pk)

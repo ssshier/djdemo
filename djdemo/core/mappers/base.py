@@ -4,6 +4,11 @@ from django.db.models import Model
 from django.forms import model_to_dict
 from pydantic import BaseModel
 
+from core.query.filter import Filter
+from core.query.page import Page
+from core.query.sort import Sort
+from core.schemas.query import SuQuerySchema
+
 ModelType = TypeVar("ModelType", bound=Model)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
 UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
@@ -15,6 +20,12 @@ class BaseMapper(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
 
     def list(self) -> Any:
         return self.model.objects.all()
+
+    def query(self, obj_in: SuQuerySchema) -> Any:
+        q = Filter(self.model, self.model.objects, obj_in.filters).filter()
+        s = Sort(q, obj_in.sorts).sort()
+        p = Page(s, obj_in.page)
+        return p.dict()
 
     def get(self, id: Any):
         return self.model.objects.get(id=id)
